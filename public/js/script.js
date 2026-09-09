@@ -1,28 +1,27 @@
-// ========== TYPING EFFECT ==========
+// ========== TYPING ==========
 const typedEl = document.getElementById('typedText');
-const words = ['que escalan.', 'que resuelven.', 'a medida.', 'que impactan.'];
+const words = ['a medida.', 'que escalan.', 'que resuelven.'];
 let wordIdx = 0, charIdx = 0, deleting = false;
-
 function type() {
-    const current = words[wordIdx];
+    const w = words[wordIdx];
     if (!deleting) {
-        typedEl.textContent = current.substring(0, charIdx + 1);
+        typedEl.textContent = w.substring(0, charIdx + 1);
         charIdx++;
-        if (charIdx === current.length) { deleting = true; setTimeout(type, 1800); return; }
-        setTimeout(type, 80);
+        if (charIdx === w.length) { deleting = true; setTimeout(type, 2000); return; }
+        setTimeout(type, 70);
     } else {
-        typedEl.textContent = current.substring(0, charIdx - 1);
+        typedEl.textContent = w.substring(0, charIdx - 1);
         charIdx--;
         if (charIdx === 0) { deleting = false; wordIdx = (wordIdx + 1) % words.length; setTimeout(type, 400); return; }
-        setTimeout(type, 40);
+        setTimeout(type, 35);
     }
 }
-setTimeout(type, 800);
+setTimeout(type, 600);
 
-// ========== NAVBAR SCROLL ==========
+// ========== NAV SCROLL ==========
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
 });
 
 // ========== MOBILE NAV ==========
@@ -39,42 +38,16 @@ navLinks.querySelectorAll('a').forEach(a => {
     });
 });
 
-// ========== STAT COUNTER ==========
-function animateStats() {
-    document.querySelectorAll('.stat-number').forEach(el => {
-        const target = +el.dataset.target;
-        const duration = 2000;
-        const start = performance.now();
-        function update(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.round(target * eased);
-            if (progress < 1) requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
-    });
-}
-
 // ========== SCROLL ANIMATIONS ==========
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            if (entry.target.classList.contains('stat')) animateStats();
-        }
-    });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.service-card, .process-step, .stack-item, .info-card, .fade-in').forEach(el => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.service-card, .process-card, .tech-category, .channel, .fade-in').forEach(el => {
     el.classList.add('fade-in');
     observer.observe(el);
 });
 
-// Stats observed separately
-document.querySelectorAll('.stat').forEach(el => observer.observe(el));
-
-// ========== CONTACT FORM ==========
+// ========== FORM ==========
 const form = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 const formMsg = document.getElementById('formMsg');
@@ -83,7 +56,6 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
     formMsg.className = 'form-message';
     formMsg.style.display = 'none';
-
     const data = {
         nombre: form.nombre.value.trim(),
         email: form.email.value.trim(),
@@ -91,16 +63,13 @@ form.addEventListener('submit', async (e) => {
         telefono: form.telefono.value.trim(),
         mensaje: form.mensaje.value.trim()
     };
-
     if (!data.nombre || !data.email || !data.mensaje) {
         formMsg.textContent = 'Completa los campos obligatorios.';
         formMsg.className = 'form-message error';
         return;
     }
-
     submitBtn.disabled = true;
-    submitBtn.querySelector('span').textContent = 'Enviando...';
-
+    submitBtn.textContent = 'Enviando...';
     try {
         const res = await fetch('/api/contact', {
             method: 'POST',
@@ -109,36 +78,35 @@ form.addEventListener('submit', async (e) => {
         });
         const json = await res.json();
         if (json.ok) {
-            formMsg.textContent = 'Mensaje enviado. Te respondo en menos de 24hs.';
+            formMsg.textContent = 'Mensaje enviado. Te respondemos en menos de 24hs.';
             formMsg.className = 'form-message success';
             form.reset();
-            showToast('Mensaje enviado correctamente', 'success');
+            showToast('Mensaje enviado', 'success');
         } else {
-            formMsg.textContent = json.msg || 'Error al enviar. Intenta de nuevo.';
+            formMsg.textContent = json.msg || 'Error al enviar.';
             formMsg.className = 'form-message error';
         }
-    } catch (err) {
-        formMsg.textContent = 'Error de conexion. Intenta de nuevo.';
+    } catch {
+        formMsg.textContent = 'Error de conexion.';
         formMsg.className = 'form-message error';
     } finally {
         submitBtn.disabled = false;
-        submitBtn.querySelector('span').textContent = 'Enviar mensaje';
+        submitBtn.textContent = 'Enviar mensaje';
     }
 });
 
-// ========== TOAST ==========
 function showToast(msg, type) {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.className = 'toast ' + type + ' show';
-    setTimeout(() => { toast.className = 'toast'; }, 3500);
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast ' + type + ' show';
+    setTimeout(() => t.className = 'toast', 3500);
 }
 
 // ========== SMOOTH SCROLL ==========
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
         e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const el = document.querySelector(a.getAttribute('href'));
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
