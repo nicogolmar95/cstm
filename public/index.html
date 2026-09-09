@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSTM | Desarrollo de Software Personalizado</title>
+    <meta name="description" content="Desarrollo de software a medida. Web apps, sistemas de gestion. Transformamos tus ideas en soluciones digitales.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-bracket">{</span>CSTM<span class="logo-bracket">}</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#servicios">Servicios</a>
+                <a href="#stack">Stack</a>
+                <a href="#proceso">Proceso</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <a href="#contacto" class="nav-cta">Hablemos</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+            <div class="glow glow-1"></div>
+            <div class="glow glow-2"></div>
+            <div class="glow glow-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Disponible para nuevos proyectos
+            </div>
+            <h1>
+                Construyo software<br>
+                <span class="gradient-text" id="typedText"></span><span class="cursor">|</span>
+            </h1>
+            <p class="hero-sub">
+                Desarrollo de soluciones digitales a medida. Web apps,
+                sistemas de gestion y automatizacion. De la idea al deploy.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn-primary">
+                    <span>Empezar un proyecto</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+                <a href="#servicios" class="btn-secondary">Ver servicios</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="7">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Anos de experiencia</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="15">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Proyectos entregados</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Clientes satisfechos</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Servicios</span>
+                <h2>Soluciones que <span class="gradient-text">escalan</span></h2>
+                <p>Desde una landing page hasta un sistema empresarial completo. Cada proyecto es unico.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-delay="0">
+                    <div class="service-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
+                    </div>
+                    <h3>Web Apps</h3>
+                    <p>Aplicaciones web completas con dashboards interactivos, APIs REST, autenticacion y bases de datos.</p>
+                    <div class="service-tags">
+                        <span>React</span><span>Spring Boot</span><span>Node.js</span>
+                    </div>
+                </div>
+                <div class="service-card featured" data-delay="100">
+                    <div class="featured-badge">Popular</div>
+                    <div class="service-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+                    </div>
+                    <h3>Sistemas de Gestion</h3>
+                    <p>CRMs, ERPs, inventarios, gestion de usuarios. Automatiza tu negocio con software propio.</p>
+                    <div class="service-tags">
+                        <span>Java</span><span>PostgreSQL</span><span>MySQL</span><span>Oracle</span>
+                    </div>
+                </div>
+                <div class="service-card" data-delay="200">
+                    <div class="service-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+                    </div>
+                    <h3>APIs & Backend</h3>
+                    <p>Servicios REST, microservicios, integraciones con sistemas existentes y automatizaciones.</p>
+                    <div class="service-tags">
+                        <span>Node.js</span><span>Express</span><span>REST</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Tech Stack</span>
+                <h2>Tecnologias</h2>
+                <p>Las mejores herramientas para cada tipo de proyecto.</p>
+            </div>
+            <div class="stack-grid">
+                <div class="stack-item"><div class="stack-icon">☕</div><span>Java</span></div>
+                <div class="stack-item"><div class="stack-icon">🟢</div><span>Node.js</span></div>
+                <div class="stack-item"><div class="stack-icon">⚛️</div><span>React</span></div>
+                <div class="stack-item"><div class="stack-icon">🍃</div><span>Spring Boot</span></div>
+                <div class="stack-item"><div class="stack-icon">🐘</div><span>PostgreSQL</span></div>
+                <div class="stack-item"><div class="stack-icon">🐬</div><span>MySQL</span></div>
+                <div class="stack-item"><div class="stack-icon">🔴</div><span>Oracle</span></div>
+                <div class="stack-item"><div class="stack-icon">🎨</div><span>Tailwind CSS</span></div>
+                <div class="stack-item"><div class="stack-icon">🐳</div><span>Docker</span></div>
+                <div class="stack-item"><div class="stack-icon">🔧</div><span>Git</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section id="proceso">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Proceso</span>
+                <h2>De la idea al <span class="gradient-text">deploy</span></h2>
+                <p>Metodologia clara para resultados predecibles.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-line"></div>
+                <div class="process-step" data-step="01">
+                    <div class="step-content">
+                        <h3>Descubrimiento</h3>
+                        <p>Analizo tu negocio, tus necesidades y tus usuarios. Definimos juntos que construir.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-step="02">
+                    <div class="step-content">
+                        <h3>Diseno & Prototipo</h3>
+                        <p>Wireframes, UI/UX, prototipo interactivo. Aprobás antes de que se escriba una linea de codigo.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-step="03">
+                    <div class="step-content">
+                        <h3>Desarrollo</h3>
+                        <p>Sprints cortos, entregas frecuentes. Vos ves el progreso en tiempo real.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-step="04">
+                    <div class="step-content">
+                        <h3>Deploy & Soporte</h3>
+                        <p>Lanzamiento, monitoreo, ajustes. Tu app funcionando y escalando.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contacto</span>
+                <h2>Contame tu <span class="gradient-text">idea</span></h2>
+                <p>Cuanto mas me cuentes, mejor puedo ayudarte.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">📧</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>cstm.software.development@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">💬</div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/5492235194603" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-size:.8rem">Escribime →</a>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <div>
+                            <h4>Ubicacion</h4>
+                            <p>Buenos Aires, Argentina</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">⏰</div>
+                        <div>
+                            <h4>Respuesta</h4>
+                            <p>En menos de 24hs</p>
+                        </div>
+                    </div>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cNombre">Nombre *</label>
+                            <input type="text" id="cNombre" name="nombre" required placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="cEmail">Email *</label>
+                            <input type="email" id="cEmail" name="email" required placeholder="tu@email.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cEmpresa">Empresa</label>
+                            <input type="text" id="cEmpresa" name="empresa" placeholder="Tu empresa (opcional)">
+                        </div>
+                        <div class="form-group">
+                            <label for="cTelefono">Telefono</label>
+                            <input type="tel" id="cTelefono" name="telefono" placeholder="+54 9 ...">
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label for="cMensaje">Cuentalo *</label>
+                        <textarea id="cMensaje" name="mensaje" rows="5" required placeholder="Describi tu idea, problema o proyecto..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary btn-submit" id="submitBtn">
+                        <span>Enviar mensaje</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    </button>
+                    <div id="formMsg" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <span class="logo-bracket">{</span>CSTM<span class="logo-bracket">}</span>
+            </div>
+            <p>Desarrollo de software personalizado</p>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">&copy; 2026 CSTM Software Development. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- TOAST -->
+    <div id="toast" class="toast"></div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
