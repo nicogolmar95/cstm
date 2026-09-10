@@ -10,17 +10,9 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/themes.css">
 </head>
-<body data-theme="techdark">
+<body data-theme="creative">
 
-    <!-- THEME SWITCHER -->
-    <div class="theme-switcher" id="themeSwitcher">
-        <button class="theme-btn active" data-theme="techdark" title="Tech Dark">TD</button>
-        <button class="theme-btn" data-theme="minimal" title="Minimalista">MN</button>
-        <button class="theme-btn" data-theme="corporate" title="Corporativo">CO</button>
-        <button class="theme-btn" data-theme="creative" title="Creativo">CR</button>
-    </div>
-
-    <!-- NAVBAR -->
+    </nav>
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo"><span class="logo-accent">{</span>CSTM<span class="logo-accent">}</span> <span class="logo-sub">Software</span></a>
@@ -204,36 +196,88 @@
                 <div class="tech-category reveal">
                     <h4>Backend</h4>
                     <div class="tech-items">
-                        <span class="tech-pill pill-java">Java</span>
-                        <span class="tech-pill pill-spring">Spring Boot</span>
-                        <span class="tech-pill pill-node">Node.js</span>
+                        <button class="tech-icon-btn" data-tech="java">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg" alt="Java" width="48" height="48" loading="lazy">
+                            <span>Java</span>
+                        </button>
+                        <button class="tech-icon-btn" data-tech="spring">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg" alt="Spring Boot" width="48" height="48" loading="lazy">
+                            <span>Spring</span>
+                        </button>
+                        <button class="tech-icon-btn" data-tech="node">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js" width="48" height="48" loading="lazy">
+                            <span>Node.js</span>
+                        </button>
                     </div>
                 </div>
                 <div class="tech-category reveal">
                     <h4>Frontend</h4>
                     <div class="tech-items">
-                        <span class="tech-pill pill-react">React</span>
-                        <span class="tech-pill pill-thymeleaf">Thymeleaf</span>
-                        <span class="tech-pill pill-tailwind">Tailwind CSS</span>
-                        <span class="tech-pill pill-js">JavaScript</span>
+                        <button class="tech-icon-btn" data-tech="react">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" alt="React" width="48" height="48" loading="lazy">
+                            <span>React</span>
+                        </button>
+                        <button class="tech-icon-btn" data-tech="thymeleaf">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/thymeleaf/thymeleaf-original-wordmark.svg" alt="Thymeleaf" width="48" height="48" loading="lazy">
+                            <span>Thymeleaf</span>
+                        </button>
+                        <button class="tech-icon-btn" data-tech="tailwind">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" width="48" height="48" loading="lazy">
+                            <span>Tailwind</span>
+                        </button>
+                        <button class="tech-icon-btn" data-tech="js">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" width="48" height="48" loading="lazy">
+                            <span>JavaScript</span>
+                        </button>
                     </div>
                 </div>
                 <div class="tech-category reveal">
                     <h4>Bases de datos</h4>
                     <div class="tech-items">
-                        <span class="tech-pill pill-pg">PostgreSQL</span>
-                        <span class="tech-pill pill-mysql">MySQL</span>
-                        <span class="tech-pill pill-oracle">Oracle</span>
-                        <span class="tech-pill pill-dynamo">DynamoDB</span>
+                        <button class="tech-icon-btn" data-tech="postgres">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg" alt="PostgreSQL" width="48" height="48" loading="lazy">
+                            <span>PostgreSQL</span>
+                        </button>
+                        <button class="tech-icon-btn" data-tech="mysql">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" alt="MySQL" width="48" height="48" loading="lazy">
+                            <span>MySQL</span>
+                        </button>
+                        <button class="tech-icon-btn" data-tech="oracle">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg" alt="Oracle" width="48" height="48" loading="lazy">
+                            <span>Oracle</span>
+                        </button>
+                        <button class="tech-icon-btn" data-tech="dynamo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="DynamoDB" width="48" height="48" loading="lazy">
+                            <span>DynamoDB</span>
+                        </button>
                     </div>
                 </div>
                 <div class="tech-category reveal">
                     <h4>Infraestructura</h4>
                     <div class="tech-items">
-                        <span class="tech-pill pill-docker">Docker</span>
-                        <span class="tech-pill pill-aws">AWS</span>
-                        <span class="tech-pill pill-git">Git</span>
+                        <button class="tech-icon-btn" data-tech="docker">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg" alt="Docker" width="48" height="48" loading="lazy">
+                            <span>Docker</span>
+                        </button>
+                        <button class="tech-icon-btn" data-tech="aws">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS" width="48" height="48" loading="lazy">
+                            <span>AWS</span>
+                        </button>
+                        <button class="tech-icon-btn" data-tech="git">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg" alt="Git" width="48" height="48" loading="lazy">
+                            <span>Git</span>
+                        </button>
                     </div>
+                </div>
+            </div>
+
+            <!-- Tech Detail Modal -->
+            <div class="tech-modal" id="techModal">
+                <div class="tech-modal-content">
+                    <button class="tech-modal-close" id="techModalClose">&times;</button>
+                    <div class="tech-modal-icon" id="techModalIcon"></div>
+                    <h4 id="techModalTitle"></h4>
+                    <p id="techModalDesc"></p>
                 </div>
             </div>
         </div>
@@ -395,6 +439,12 @@
     </footer>
 
     <div id="toast" class="toast"></div>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5492235194603" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
     <script src="/js/script.js"></script>
 </body>
 </html>

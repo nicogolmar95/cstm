@@ -88,7 +88,7 @@ ul{list-style:none}
 .proof-sep{width:1px;height:40px;background:var(--border)}
 
 /* ============ SECTIONS ============ */
-section{padding:100px 0}
+section{padding:80px 0}
 .section-header{text-align:center;margin-bottom:60px}
 .section-tag{display:inline-block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);padding:6px 16px;border-radius:100px;margin-bottom:16px}
 .section-header h2,.about-left h2,.cta-box h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
@@ -142,9 +142,9 @@ section{padding:100px 0}
 
 /* ============ TECH ============ */
 #tecnologias{background:var(--bg2)}
-.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.tech-category{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;text-align:center}
-.tech-category h4{font-size:.8125rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:16px;font-weight:600}
+.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tech-category{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 16px;text-align:center}
+.tech-category h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:12px;font-weight:600}
 .tech-items{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .tech-pill{font-size:.8125rem;font-weight:600;padding:8px 16px;border-radius:100px;transition:transform .2s,box-shadow .2s}
 .tech-pill:hover{transform:scale(1.05)}
@@ -232,10 +232,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 0 32
 @media(max-width:768px){
   section{padding:72px 0}
   .nav-links,.nav-cta{display:none}
-  .nav-links.active{display:flex;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:999}
-  .nav-links.active a{font-size:1.25rem;font-weight:600}
-  .nav-toggle{display:flex}
-  .services-grid,.tech-grid,.process-grid{grid-template-columns:1fr}
+  .nav-links.active{display:flex;position:absolute;top:calc(var(--nav-h) - 4px);right:24px;width:220px;background:var(--surface);border:1px solid var(--border);border-radius:12px;flex-direction:column;align-items:stretch;gap:0;z-index:999;padding:6px 0;box-shadow:0 12px 40px rgba(0,0,0,.4)}
+  .nav-links.active a{font-size:.875rem;font-weight:500;padding:12px 16px;color:var(--text2);border-bottom:1px solid var(--border)}
+  .nav-links.active a:last-child{border-bottom:none}
+  .nav-links.active a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+  .nav-toggle{display:flex;z-index:1001}
+  .services-grid,.process-grid{grid-template-columns:1fr}
+  .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .form-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr;gap:24px}
   .proof-item{padding:0 20px}
@@ -252,6 +255,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 0 32
   #hero h1{font-size:1.8rem}
   .hero-sub{font-size:.9375rem}
   .contact-form{padding:24px}
+  .tech-grid{grid-template-columns:1fr}
 }
 
 /* ============ FLOATING ORBS ============ */
@@ -309,3 +313,34 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 0 32
 
 /* ============ FLOATING DECORATIONS ============ */
 #servicios .container,#tecnologias .container,#proceso .container{position:relative;z-index:1}
+
+/* ============ TECH ICONS ============ */
+.tech-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px;justify-items:center}
+.tech-icon-btn{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;background:var(--surface);border:1px solid var(--border);border-radius:14px;cursor:pointer;transition:all .25s cubic-bezier(.16,1,.3,1);color:var(--text2);font-family:var(--font);width:100%;max-width:110px}
+.tech-icon-btn:hover{transform:translateY(-6px) scale(1.06);border-color:var(--primary);box-shadow:0 10px 25px rgba(0,0,0,.25);color:var(--primary2)}
+.tech-icon-btn img{width:42px;height:42px;object-fit:contain;transition:transform .3s cubic-bezier(.16,1,.3,1),filter .3s;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1))}
+.tech-icon-btn:hover img{transform:scale(1.15) rotate(-3deg);filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+.tech-icon-btn:nth-child(even):hover img{transform:scale(1.15) rotate(3deg)}
+.tech-icon-btn span{font-size:.7rem;font-weight:600;letter-spacing:.02em}
+@media(max-width:768px){
+  .tech-items{grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .tech-icon-btn{padding:12px 8px;max-width:none}
+  .tech-icon-btn img{width:36px;height:36px}
+}
+
+/* ============ TECH MODAL ============ */
+.tech-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.tech-modal.active{opacity:1;pointer-events:all}
+.tech-modal-content{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;max-width:400px;width:90%;position:relative;transform:scale(.9) translateY(20px);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.tech-modal.active .tech-modal-content{transform:scale(1) translateY(0)}
+.tech-modal-close{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--text3);font-size:1.5rem;cursor:pointer;transition:color .2s;line-height:1}
+.tech-modal-close:hover{color:var(--text)}
+.tech-modal-icon{margin-bottom:16px}
+.tech-modal-icon img{width:56px;height:56px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3))}
+.tech-modal-content h4{font-size:1.25rem;font-weight:800;margin-bottom:12px;color:var(--text)}
+.tech-modal-content p{font-size:.9375rem;color:var(--text2);line-height:1.7}
+
+/* ============ WHATSAPP FLOAT ============ */
+.whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:999;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all .3s;animation:pulse-wpp 2s ease-in-out infinite}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,.5)}
+@keyframes pulse-wpp{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}50%{box-shadow:0 4px 30px rgba(37,211,102,.6)}}

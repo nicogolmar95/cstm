@@ -1,20 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ============ THEME SWITCHER ============
-  const themeBtns = document.querySelectorAll('.theme-btn');
-  const savedTheme = localStorage.getItem('cstm-theme') || 'techdark';
-  document.body.setAttribute('data-theme', savedTheme);
-  themeBtns.forEach(b => b.classList.toggle('active', b.dataset.theme === savedTheme));
-  themeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const theme = btn.dataset.theme;
-      document.body.setAttribute('data-theme', theme);
-      localStorage.setItem('cstm-theme', theme);
-      themeBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-
   // ============ NAVBAR SCROLL ============
   const navbar = document.getElementById('navbar');
   const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 20);
@@ -227,5 +212,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   window.addEventListener('scroll', updateOrbs, { passive: true });
+
+  // ============ TECH MODAL ============
+  const techDescriptions = {
+    java: 'Lenguaje de programacion robusto y escalable. Ideal para sistemas empresariales grandes que necesitan seguridad y rendimiento.',
+    spring: 'Framework para construir aplicaciones Java rapido. Maneja base de datos, seguridad y APIs automaticamente.',
+    node: 'Entorno de ejecucion rapido para servidores. Permite crear APIs y aplicaciones que manejan miles de usuarios al mismo tiempo.',
+    react: 'Biblioteca para crear interfaces modernas y rapidas. Los usuarios ven cambios al instante sin recargar.',
+    thymeleaf: 'Motor de plantillas que conecta HTML con datos del servidor. Simple y efectivo para paginas dinamicas.',
+    tailwind: 'Herramienta de estilos que permite disenar rapido sin escribir mucho codigo CSS.',
+    js: 'El lenguaje de la web. Hace que las paginas sean interactivas y funcionen en todos los navegadores.',
+    postgres: 'Base de datos gratuita y potente. Guarda información de forma segura y responde rapido.',
+    mysql: 'Base de datos clasica y confiable. Usada en millones de sitios web en todo el mundo.',
+    oracle: 'Base de datos empresarial de alta gama. Para empresas que manejan grandes volumenes de datos.',
+    dynamo: 'Base de datos de Amazon. Escala automaticamente sin importar cuanto crezca tu negocio.',
+    docker: 'Embalaje de aplicaciones. Funciona igual en cualquier computadora sin problemas de compatibilidad.',
+    aws: 'Servidores en la nube de Amazon. Paga solo lo que usas y escala cuando necesitas.',
+    git: 'Control de versiones. Guarda cada cambio del codigo para que nunca se pierda nada.'
+  };
+
+  const techModal = document.getElementById('techModal');
+  const techModalTitle = document.getElementById('techModalTitle');
+  const techModalDesc = document.getElementById('techModalDesc');
+  const techModalIcon = document.getElementById('techModalIcon');
+  const techModalClose = document.getElementById('techModalClose');
+
+  document.querySelectorAll('.tech-icon-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tech = btn.dataset.tech;
+      const img = btn.querySelector('img');
+      techModalIcon.innerHTML = '';
+      if (img) {
+        const clone = img.cloneNode();
+        clone.removeAttribute('loading');
+        clone.width = 56;
+        clone.height = 56;
+        techModalIcon.appendChild(clone);
+      }
+      techModalTitle.textContent = btn.querySelector('span').textContent;
+      techModalDesc.textContent = techDescriptions[tech] || '';
+      document.body.style.overflow = 'hidden';
+      techModal.classList.add('active');
+    });
+  });
+
+  function closeTechModal() {
+    techModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  techModalClose.addEventListener('click', closeTechModal);
+  techModal.addEventListener('click', e => {
+    if (e.target === techModal) closeTechModal();
+  });
 
 });
