@@ -30,7 +30,7 @@ app.post('/api/contact', async (req, res) => {
         const html = `
             <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#1a1a2e;color:#e0e0e0;border-radius:12px;overflow:hidden">
                 <div style="background:linear-gradient(135deg,#0f3460,#16213e);padding:30px;text-align:center">
-                    <h1 style="color:#00d4ff;margin:0;font-size:24px">Nuevo Contacto - CSTM</h1>
+                    <h1 style="color:#00d4ff;margin:0;font-size:24px">Nuevo Contacto - CSTM Software</h1>
                 </div>
                 <div style="padding:30px">
                     <table style="width:100%;border-collapse:collapse">
@@ -44,13 +44,13 @@ app.post('/api/contact', async (req, res) => {
                     <p style="color:#e0e0e0;line-height:1.6;background:#16213e;padding:16px;border-radius:8px">${mensaje.replace(/\n/g, '<br>')}</p>
                 </div>
                 <div style="background:#0f3460;padding:16px;text-align:center">
-                    <p style="color:#666;font-size:11px;margin:0">Enviado desde el formulario de contacto de cstm.dev</p>
+                    <p style="color:#666;font-size:11px;margin:0">Enviado desde el formulario de contacto de cstm.software</p>
                 </div>
             </div>
         `;
 
         await transporter.sendMail({
-            from: `"CSTM Landing" <${process.env.SMTP_USER}>`,
+            from: `"CSTM Software" <${process.env.SMTP_USER}>`,
             to: process.env.CONTACT_EMAIL,
             replyTo: email,
             subject: `Contacto desde la web - ${nombre}`,
@@ -70,5 +70,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`CSTM Landing corriendo en puerto ${PORT}`);
+    console.log(`CSTM Software Landing corriendo en puerto ${PORT}`);
 });
