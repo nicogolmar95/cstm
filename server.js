@@ -7,6 +7,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+
+// No cache for HTML
+app.use((req, res, next) => {
+    if (req.url.endsWith('.html') || req.url === '/') {
+        res.setHeader('Cache-Control', 'no-cache');
+    }
+    next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Contact form
