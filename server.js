@@ -6,9 +6,54 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+// Security headers
+app.use((req, res, next) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+    res.setHeader('X-XSS-Protection', '1; mode=block');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+    next();
+});
 
+app.use(express.json());
+
+// Static files with caching
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: '7d',
+    etag: true,
+    lastModified: true,
+    setHeaders: (res, filePath) => {
+        if (filePath.endsWith('.html')) {
+            res.setHeader('Cache-Control', 'no-cache');
+        } else if (filePath.endsWith('.xml') || filePath.endsWith('.txt')) {
+            res.setHeader('Cache-Control', 'no-cache');
+        }
+    }
+}));
+
+// Sitemap with correct content type
+app.get('/sitemap.xml', (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.type('application/xml');
+    res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+
+// Robots.txt
+app.get('/robots.txt', (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.type('text/plain');
+    res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
+});
+
+// Google verification
+app.get('/google5e7cea5dac2f98cf.html', (req, res) => {
+    res.type('text/html');
+    res.sendFile(path.join(__dirname, 'public', 'google5e7cea5dac2f98cf.html'));
+});
+
+// Contact form
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: parseInt(process.env.SMTP_PORT),
@@ -65,8 +110,9 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
+// SPA fallback
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
 
 app.listen(PORT, () => {
