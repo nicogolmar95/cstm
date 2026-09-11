@@ -33,38 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ============ TYPING EFFECT ============
-  const phrases = ['impulsa tu negocio', 'escala sin limites', 'automatiza procesos', 'genera impacto'];
-  const typedEl = document.getElementById('typedText');
-  let pi = 0, ci = 0, deleting = false, pauseCount = 0;
-
-  function typeStep() {
-    const current = phrases[pi];
-    if (!deleting) {
-      typedEl.textContent = current.substring(0, ci + 1);
-      ci++;
-      if (ci === current.length) {
-        if (pauseCount < 25) { pauseCount++; setTimeout(typeStep, 100); return; }
-        pauseCount = 0;
-        deleting = true;
-        setTimeout(typeStep, 40);
-        return;
-      }
-      setTimeout(typeStep, 70 + Math.random() * 40);
-    } else {
-      typedEl.textContent = current.substring(0, ci - 1);
-      ci--;
-      if (ci === 0) {
-        deleting = false;
-        pi = (pi + 1) % phrases.length;
-        setTimeout(typeStep, 300);
-        return;
-      }
-      setTimeout(typeStep, 30);
-    }
-  }
-  setTimeout(typeStep, 600);
-
   // ============ SCROLL REVEAL ============
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
@@ -216,17 +184,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============ TECH MODAL ============
   const techDescriptions = {
     java: 'Lenguaje de programacion robusto y escalable. Ideal para sistemas empresariales grandes que necesitan seguridad y rendimiento.',
-    spring: 'Framework para construir aplicaciones Java rapido. Maneja base de datos, seguridad y APIs automaticamente.',
-    node: 'Entorno de ejecucion rapido para servidores. Permite crear APIs y aplicaciones que manejan miles de usuarios al mismo tiempo.',
+    spring: 'Framework para construir aplicaciones Java rapido. Maneja base de datos, seguridad y conexiones automaticamente.',
+    node: 'Entorno de ejecucion rapido para servidores. Permite crear aplicaciones que manejan miles de usuarios al mismo tiempo.',
     react: 'Biblioteca para crear interfaces modernas y rapidas. Los usuarios ven cambios al instante sin recargar.',
     thymeleaf: 'Motor de plantillas que conecta HTML con datos del servidor. Simple y efectivo para paginas dinamicas.',
-    tailwind: 'Herramienta de estilos que permite disenar rapido sin escribir mucho codigo CSS.',
+    tailwind: 'Herramienta de estilos que permite disenar rapido sin escribir mucho codigo.',
     js: 'El lenguaje de la web. Hace que las paginas sean interactivas y funcionen en todos los navegadores.',
-    postgres: 'Base de datos gratuita y potente. Guarda información de forma segura y responde rapido.',
+    postgres: 'Base de datos gratuita y potente. Guarda informacion de forma segura y responde rapido.',
     mysql: 'Base de datos clasica y confiable. Usada en millones de sitios web en todo el mundo.',
     oracle: 'Base de datos empresarial de alta gama. Para empresas que manejan grandes volumenes de datos.',
     dynamo: 'Base de datos de Amazon. Escala automaticamente sin importar cuanto crezca tu negocio.',
-    docker: 'Embalaje de aplicaciones. Funciona igual en cualquier computadora sin problemas de compatibilidad.',
+    docker: 'Herramienta que empaqueta aplicaciones para que funcionen igual en cualquier computadora.',
     aws: 'Servidores en la nube de Amazon. Paga solo lo que usas y escala cuando necesitas.',
     git: 'Control de versiones. Guarda cada cambio del codigo para que nunca se pierda nada.'
   };
