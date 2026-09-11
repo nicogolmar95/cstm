@@ -8,15 +8,37 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// No cache for HTML
-app.use((req, res, next) => {
-    if (req.url.endsWith('.html') || req.url === '/') {
-        res.setHeader('Cache-Control', 'no-cache');
-    }
-    next();
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Sitemap - hard coded
+app.get('/sitemap.xml', (req, res) => {
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://cstm.onrender.com/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>`);
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+// Robots - hard coded
+app.get('/robots.txt', (req, res) => {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.send(`User-agent: *
+Allow: /
+Sitemap: https://cstm.onrender.com/sitemap.xml`);
+});
+
+// Google verification
+app.get('/google5e7cea5dac2f98cf.html', (req, res) => {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send('google-site-verification: google5e7cea5dac2f98cf.html');
+});
 
 // Contact form
 const transporter = nodemailer.createTransport({
