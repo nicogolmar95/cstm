@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
+const fs = require('fs');
 const path = require('path');
 
 const app = express();
@@ -19,39 +20,16 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-// Static files with caching
-app.use(express.static(path.join(__dirname, 'public'), {
-    maxAge: '7d',
-    etag: true,
-    lastModified: true,
-    setHeaders: (res, filePath) => {
-        if (filePath.endsWith('.html')) {
-            res.setHeader('Cache-Control', 'no-cache');
-        } else if (filePath.endsWith('.xml') || filePath.endsWith('.txt')) {
-            res.setHeader('Cache-Control', 'no-cache');
-        }
+// Serve XML files with correct content type
+app.use((req, res, next) => {
+    if (req.url.endsWith('.xml')) {
+        res.setHeader('Content-Type', 'application/xml; charset=utf-8');
     }
-}));
-
-// Sitemap with correct content type
-app.get('/sitemap.xml', (req, res) => {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.type('application/xml');
-    res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+    next();
 });
 
-// Robots.txt
-app.get('/robots.txt', (req, res) => {
-    res.setHeader('Cache-Control', 'no-cache');
-    res.type('text/plain');
-    res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
-});
-
-// Google verification
-app.get('/google5e7cea5dac2f98cf.html', (req, res) => {
-    res.type('text/html');
-    res.sendFile(path.join(__dirname, 'public', 'google5e7cea5dac2f98cf.html'));
-});
+// Static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Contact form
 const transporter = nodemailer.createTransport({
@@ -110,9 +88,9 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
-// SPA fallback
+// All other routes -> index.html
 app.get('*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
