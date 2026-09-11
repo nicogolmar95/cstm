@@ -1,34 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
-const fs = require('fs');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Security headers
-app.use((req, res, next) => {
-    res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-    res.setHeader('X-XSS-Protection', '1; mode=block');
-    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-    next();
-});
-
 app.use(express.json());
-
-// Serve XML files with correct content type
-app.use((req, res, next) => {
-    if (req.url.endsWith('.xml')) {
-        res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-    }
-    next();
-});
-
-// Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Contact form
@@ -88,7 +66,6 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
-// All other routes -> index.html
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
